@@ -54,19 +54,23 @@ module WeeklySnippets
     end
 
     def test_publish_all_snippets
-      add_snippet('20141218', make_snippet(['- Did stuff']))
-      add_snippet('20141225', make_snippet(['- Did stuff']))
-      add_snippet('20141231', make_snippet(['- Did stuff']))
       add_snippet('20150107', make_snippet(['- Did stuff'], is_public: true))
-      assert_equal @expected, publisher.publish(@original)
+      add_snippet('20141218', make_snippet(['- Did stuff']))
+      add_snippet('20141231', make_snippet(['- Did stuff']))
+      add_snippet('20141225', make_snippet(['- Did stuff']))
+      published = publisher.publish(@original)
+      assert_equal @expected, published
+      assert_equal @expected.keys.sort, published.keys
     end
 
     def test_publish_only_public_snippets_in_public_mode
-      add_snippet('20141218', make_snippet(['- Did stuff']), expected: false)
-      add_snippet('20141225', make_snippet(['- Did stuff']), expected: false)
-      add_snippet('20141231', make_snippet(['- Did stuff']), expected: false)
       add_snippet('20150107', make_snippet(['- Did stuff'], is_public: true))
-      assert_equal @expected, publisher(public_mode: true).publish(@original)
+      add_snippet('20141218', make_snippet(['- Did stuff']), expected: false)
+      add_snippet('20141231', make_snippet(['- Did stuff']), expected: false)
+      add_snippet('20141225', make_snippet(['- Did stuff']), expected: false)
+      published = publisher(public_mode: true).publish(@original)
+      assert_equal @expected, published
+      assert_equal @expected.keys.sort, published.keys
     end
   end
 end

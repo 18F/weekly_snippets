@@ -32,7 +32,10 @@ module WeeklySnippets
     end
 
     # Processes +snippets+ entries for publication. Any snippets that should
-    # not appear when in +public_mode+ are removed from +snippets+
+    # not appear when in +public_mode+ are removed from +snippets+. The keys
+    # of the resulting hash will be sorted in nondecreasing order.
+    # @param snippets [Hash<String,Hash>] timestamp => batch of snippets
+    # @return [Hash<String,Hash>]
     def publish(snippets)
       result = {}
       snippets.each do |timestamp, snippet_batch|
@@ -44,7 +47,7 @@ module WeeklySnippets
         end
         result[timestamp] = published unless published.empty?
       end
-      result
+      result.sort.to_h
     end
 
     # Parses and publishes a snippet. Filters out snippets rendered empty
