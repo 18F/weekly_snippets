@@ -1,15 +1,15 @@
 PATH
   remote: .
   specs:
-    weekly_snippets (0.0.1)
+    weekly_snippets (0.0.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    codeclimate-test-reporter (0.4.4)
+    codeclimate-test-reporter (0.4.5)
       simplecov (>= 0.7.1, < 1.0.0)
     docile (1.1.5)
-    minitest (5.5.0)
+    minitest (5.5.1)
     multi_json (1.10.1)
     rake (10.4.2)
     simplecov (0.9.1)
