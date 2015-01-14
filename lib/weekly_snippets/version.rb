@@ -15,7 +15,7 @@
 # @author Mike Bland (michael.bland@gsa.gov)
 
 module WeeklySnippets
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
 
   # Encapsulates the mapping from actual snippet data fields to a standardized
   # set of data fields for each version of snippets.
